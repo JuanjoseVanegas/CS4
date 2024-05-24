@@ -1,0 +1,3 @@
+https://goncy.netlify.app/autenticacion-firebase-react-context
+
+https://codesandbox.io/p/sandbox/github/goncy/blog/tree/master/src/content/autenticacion-con-firebase-en-react/repository?file=%2Fsrc%2Fsession%2Fcontext.js%3A3%2C21
