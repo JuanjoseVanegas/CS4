@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { Button } from "flowbite-react";
 import toast, { Toaster } from "react-hot-toast";
@@ -81,10 +79,17 @@ export const Api = () => {
   const handleDeletePerson = async (cedula) => {
     try {
       await handleDelete(cedula);
-      toast.success("Person deleted successfully");
+      toast.success("Persona borrada exitosamente");
+
+      // Recargar la lista de personas
       fetchPersonsData();
+
+      // Si no quedan personas, recargar la página
+      if (persons.length === 1) {
+        window.location.reload();
+      }
     } catch (error) {
-      toast.error(`Error deleting person: ${error.message}`);
+      toast.error(`Error al borrar la persona: ${error.message}`);
     }
   };
 

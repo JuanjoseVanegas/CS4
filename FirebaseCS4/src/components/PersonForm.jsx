@@ -1,6 +1,13 @@
 import { Button, Label, TextInput, Card } from "flowbite-react";
 
-const PersonForm = ({ isEditing, newPerson, handleInputChange, handleAddPerson, handleUpdatePerson, closeModal }) => (
+const PersonForm = ({
+  isEditing,
+  newPerson,
+  handleInputChange,
+  handleAddPerson,
+  handleUpdatePerson,
+  closeModal,
+}) => (
   <Card className="max-w-3xl w-full p-8">
     <h2 className="mb-4">{isEditing ? "Editar Persona" : "Agregar Persona"}</h2>
     <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -24,6 +31,7 @@ const PersonForm = ({ isEditing, newPerson, handleInputChange, handleAddPerson, 
           value={newPerson.cedula}
           onChange={handleInputChange}
           required
+          disabled={isEditing}
         />
       </div>
       <div>
