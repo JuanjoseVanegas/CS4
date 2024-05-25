@@ -1,4 +1,3 @@
-// personServices.js
 import {
   fetchPersonData,
   deletePersonData,
@@ -18,108 +17,32 @@ export const loadpersonsData = async (setPersonData, setError, id = null) => {
 };
 
 export const handleDelete = async (id) => {
-  console.log("ID to delete:", id);
   try {
     await deletePersonData(id);
-    toast.success("Transaction deleted successfully");
+    toast.success("Person deleted successfully");
   } catch (error) {
-    toast.error(`Error deleting transaction: ${error.message}`);
+    toast.error(`Error deleting person: ${error.message}`);
   }
 };
 
-export const addPerson = async (
-  name,
-  cedula,
-  email,
-  phoneNumber,
-  dateBirth,
-  address,
-  userName,
-  password,
-  instraction
-) => {
-  if (
-    !name ||
-    !cedula ||
-    !email ||
-    !phoneNumber ||
-    !dateBirth ||
-    !address ||
-    !userName ||
-    !password
-  ) {
-    toast.error("Please fill in all fields");
-    return false;
-  }
-
+export const addPerson = async (personData) => {
   try {
-    const formData = {
-      name,
-      cedula,
-      email,
-      phoneNumber,
-      dateBirth,
-      address,
-      userName,
-      password,
-      rol: instraction.name,
-    };
-
-    console.log("Datos enviados en la solicitud POST:", formData);
-    await createPersonData(formData);
+    await createPersonData(personData);
     toast.success("Person created successfully");
     return true;
   } catch (error) {
     toast.error(error.message || "Unknown error occurred");
-    console.error("Error creating person: ", error);
     return false;
   }
 };
 
-export const updatePerson = async (
-  name,
-  cedula,
-  email,
-  phoneNumber,
-  dateBirth,
-  address,
-  userName,
-  password,
-  instraction
-) => {
-  if (
-    !name ||
-    !cedula ||
-    !email ||
-    !phoneNumber ||
-    !dateBirth ||
-    !address ||
-    !userName ||
-    !password
-  ) {
-    toast.error("Please fill in all fields");
-    return false;
-  }
+export const updatePerson = async (personData) => {
   try {
-    const updatedPersonData = {
-      name,
-      cedula,
-      email,
-      phoneNumber,
-      dateBirth,
-      address,
-      userName,
-      password,
-      rol: instraction.name,
-    };
-
-    console.log("Datos enviados en la solicitud PUT:", updatedPersonData);
-    await updatePersonData(cedula, updatedPersonData);
+    await updatePersonData(personData.cedula, personData);
     toast.success("Person updated successfully");
     return true;
   } catch (error) {
     toast.error(error.message || "Unknown error occurred");
-    console.error("Error updating person: ", error);
     return false;
   }
 };

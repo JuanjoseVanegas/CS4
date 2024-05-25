@@ -8,7 +8,7 @@ import { Button } from "flowbite-react";
 const App = () => {
   const { status, userId } = useContext(AuthContext);
 
-  if (status === 'checking') return <p className="loading"><span>Checking credentials, wait a moment...</span></p>;
+  if (status === 'checking') return <p className="loading item-center"><span>Loading</span></p>;
 
   return (
     <main className="flex justify-center items-center h-screen bg-gradient-to-r from-cyan-500 to-blue-500">

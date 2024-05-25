@@ -67,6 +67,10 @@ def dateBirthValidator(string, element):
     if dateBirth < maxAge:
         raise ValueError("La fecha de nacimiento no puede ser mayor a 150 años.")
 
+    minAge = datetime.today() - timedelta(days=365 * 18)
+    if dateBirth > minAge:
+        raise ValueError("El usuario debe tener al menos 18 años.")
+
     return dateBirth
 
 def futureDateValidator(string, element):
